@@ -6,6 +6,10 @@ module.exports = {
 		.setDescription('Replies with <name> is Cool!')
         .addStringOption(option => option.setName('name').setDescription('Enter a name')),
 	async execute(interaction) {
-		await interaction.reply(`${interaction.options.getString("name")} is Cool!`);
+        if (interaction.options.getString("name") === null) {
+            await interaction.reply("You are cool!");
+        } else {
+            await interaction.reply(`${interaction.options.getString("name")} is Cool!`);
+        }
 	},
 };
