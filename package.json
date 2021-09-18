@@ -1,0 +1,22 @@
+{
+  "name": "htn2021",
+  "version": "1.0.0",
+  "description": "hack the north repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sherwinchiu/htn2021.git"
+  },
+  "keywords": [
+    "htn2021"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sherwinchiu/htn2021/issues"
+  },
+  "homepage": "https://github.com/sherwinchiu/htn2021#readme"
+}
