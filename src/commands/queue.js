@@ -14,7 +14,7 @@ module.exports = {
             embed.setTitle("Your Queue");
             let foundChannel = false;
             for (const channel of queue) {
-                if (channel.channelId === interaction.guild_id) {
+                if (channel.channelId === interaction.member.guild.id) {
                     foundChannel = true;
                     for (const song of channel.channelQueue) {
                         embed.addField(`${song.name}`, "song description...?");
@@ -26,13 +26,13 @@ module.exports = {
             // console.log(interaction.guild_id);
             let foundChannel = false;
             for (const channel of queue) {
-                if (channel.channelId === interaction.guild_id) {
+                if (channel.channelId === interaction.member.guild.id) {
                     channel.channelQueue.push({name: interaction.options.getString("song")})
                     foundChannel = true;
                 }
             }
             if (!foundChannel) {
-                queue.push({channelId: interaction.guild_id, channelQueue: [{name: interaction.options.getString("song")}]})
+                queue.push({channelId: interaction.member.guild.id, channelQueue: [{name: interaction.options.getString("song")}]})
             }
             await interaction.reply(`${interaction.options.getString("song")} has been added to the queue!`);
         }
