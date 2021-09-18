@@ -11,6 +11,6 @@ module.exports = {
 		.setName('skip')
 		.setDescription('/skip (skipping song name/url), skips current song and moves to next song in queue. Fails if there is no queue'),
 	async execute(interaction, client) {
-		
+
 	},
 };
