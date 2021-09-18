@@ -12,7 +12,9 @@ module.exports = {
 		if (client.voice.adapters.length > 0) {
 			interaction.reply("Being used somewhere else");
 		} else {
-			if (interaction.member.voice.channel) {
+			if (`${interaction.options.getString("song")}` === 'null') {
+				await interaction.reply ('Please put in the song you want to play'); // later to be changed to start playing if paused
+			} else if (interaction.member.voice.channel) {
 				joinVoiceChannel({
 					channelId: interaction.member.voice.channel.id,
 					guildId: interaction.member.guild.id,
@@ -20,7 +22,7 @@ module.exports = {
 				});
 				await interaction.reply('**Playing** (song name/song url)');
 			} else {
-				await interaction.reply("Join a voice channel first");
+				await interaction.reply("Please join a voice channel first");
 			}
 		}
 	},
