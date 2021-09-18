@@ -1,4 +1,4 @@
-onst { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const ytdl = require("ytdl-core");
 const ytSearch = require("yt-search");

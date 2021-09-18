@@ -18,5 +18,6 @@ module.exports = {
 			} else {
 				await interaction.reply("Please join a voice channel first");
 			}
-		},
+		}
+    }
 };
