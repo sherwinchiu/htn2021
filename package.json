@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/sherwinchiu/htn2021/issues"
   },
-  "homepage": "https://github.com/sherwinchiu/htn2021#readme"
+  "homepage": "https://github.com/sherwinchiu/htn2021#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
 }
