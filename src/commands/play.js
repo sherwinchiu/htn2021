@@ -36,10 +36,12 @@ module.exports = {
 						await interaction.reply("Something broke");
 					}
 				}
-				const player = createAudioPlayer();
-				const resource = createAudioResource(ytdl(song.url, {filter: 'audioonly'}));
-				player.play(resource);
-				await interaction.reply(`**Playing** ${interaction.options.getString("song")}`);
+				if (song) {
+					const player = createAudioPlayer();
+					const resource = createAudioResource(ytdl(song.url, {filter: 'audioonly'}));
+					player.play(resource);
+					await interaction.reply(`**Playing** ${interaction.options.getString("song")}`);
+				}
 			} else {
 				await interaction.reply("Please join a voice channel first");
 			}
