@@ -1,5 +1,8 @@
 # htn2021
 we are htn
+## Dependencies
+* [Node v16](https://nodejs.org/)
+* [Discord.js v13](https://discordjs.guide/additional-info/changes-in-v13.html#before-you-start)
 ## Deploying
 1. Create a `.env` file that follows the [`.env.template`](./.env.template) format.  
 `TOKEN`: your Discord bot token that can be found in [Discord developers](https://discord.com/developers), your specific bot application, Bot > TOKEN  
