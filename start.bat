@@ -1,1 +1,1 @@
-node -r dotenv/config src/index.js
+npm start
