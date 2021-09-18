@@ -28,6 +28,7 @@
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.2.0-dev.1631966593.92f6471",
     "dotenv": "^10.0.0",
+    "ffmpeg": "^0.0.4",
     "node": "^16.9.1",
     "yt-search": "^2.10.1",
     "ytdl-core": "^4.9.1"
