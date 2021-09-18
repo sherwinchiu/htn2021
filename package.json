@@ -2,9 +2,10 @@
   "name": "htn2021",
   "version": "1.0.0",
   "description": "hack the north repo",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node ."
+    "test": "node .",
+    "start": "node -r dotenv/config src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/sherwinchiu/htn2021#readme",
   "dependencies": {
-    "discord.js": "^13.1.0"
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.2.0-dev.1631923468.92f6471",
+    "dotenv": "^10.0.0"
   }
 }
