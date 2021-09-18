@@ -7,7 +7,7 @@ module.exports = {
 		.setName('queue')
 		.setDescription('Adds a song to the queue')
         .addStringOption(option => option.setName('song').setDescription('Enter a song name')),
-	async execute(interaction) {
+	async execute(interaction, client) {
         if (interaction.options.getString("song") === null) {
             const embed = new MessageEmbed();
             embed.setColor("AQUA");

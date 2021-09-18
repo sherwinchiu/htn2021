@@ -5,7 +5,7 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Replies with <name> is Cool!')
         .addStringOption(option => option.setName('name').setDescription('Enter a name')),
-	async execute(interaction) {
+	async execute(interaction, client) {
         if (interaction.options.getString("name") === null) {
             await interaction.reply("You are cool!");
         } else {
