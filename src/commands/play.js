@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { getVoiceConnection,joinVoiceChannel } = require('@discordjs/voice');
+const { createAudioResource, createAudioPlayer, joinVoiceChannel } = require('@discordjs/voice');
 const ytdl = require("ytdl-core");
 const ytSearch = require("yt-search");
 
@@ -20,7 +20,26 @@ module.exports = {
 					guildId: interaction.member.guild.id,
 					adapterCreator: interaction.guild.voiceAdapterCreator,
 				});
-				await interaction.reply('**Playing** (song name/song url)');
+				let song;
+				if (ytdl.validateURL(interaction.options.getString("song"))) {
+					const songInfo = await ytdl.getInfo(interaction.options.getString("song"));
+					song = {title: songInfo.videoDetails.title, url: songInfo.videoDetails.video_url}
+				} else {
+					const videoFinder = async(query) => {
+						const videoResult = await ytSearch(query);
+						return (videoResult.videos.length > 1) ? videoResult.videos[0]: null;
+					}
+					const video = await videoFinder(interaction.options.getString("song"));
+					if (video) {
+						song = {title: video.title, url: video.url}
+					} else {
+						await interaction.reply("Something broke");
+					}
+				}
+				const player = createAudioPlayer();
+				const resource = createAudioResource(ytdl(song.url, {filter: 'audioonly'}));
+				player.play(resource);
+				await interaction.reply(`**Playing** ${interaction.options.getString("song")}`);
 			} else {
 				await interaction.reply("Please join a voice channel first");
 			}
