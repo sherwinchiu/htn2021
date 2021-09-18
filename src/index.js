@@ -6,43 +6,21 @@ const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES] });
 
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.data.name, command);
-}
 
 client.once('ready', () => {
 	console.log('Ready!');
+	const guild = client.guilds.cache.get(process.env.GUILD_ID);
+	let commands;
+	if (guild) {
+		commands = guild.commands;
+	}
+	const commandFiles = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const command = require(`./commands/${file}`);
+		client.commands.set(command.data.name, command);
+		commands?.create(command.data);
+	}
 });
-
-// client.on('interactionCreate', async interaction => {
-// 	console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
-// 	if (!interaction.isCommand()) return;
-
-// 	const { commandName } = interaction;
-
-// 	if (commandName === 'ping') {
-// 		await interaction.reply('Pong!');
-// 	} else if (commandName === 'server') {
-// 		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
-// 	} else if (commandName === 'user') {
-// 		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-// 	}
-// })
-
-// client.on('interactionCreate', async interaction => {
-// 	console.log(interaction)
-// 	if (!interaction.isCommand()) return;
-
-// 	if (interaction.commandName === 'ping') {
-// 		await interaction.reply('Pong!');
-// 	}
-// });
-
-// client.on("messageCreate", message => {
-//     console.log(message);
-// });
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
