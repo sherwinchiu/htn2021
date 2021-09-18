@@ -1,6 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+const ytdl = require("ytdl-core");
+const ytSearch = require("yt-search");
+
 let {queue} = require("./../data/musicQueue");
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
